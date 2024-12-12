@@ -1,0 +1,38 @@
+# Excluir archivos y directorios de Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Entornos virtuales
+env/
+venv/
+ENV/
+.venv/
+
+# Configuración del IDE
+.idea/
+.vscode/
+
+# Archivos de configuración o secretos
+*.env
+*.secret
+config.json
+
+# Archivos de pruebas y logs
+*.log
+*.pytest_cache/
+.tox/
+.coverage
+htmlcov/
+
+# Archivos de compilación
+*.egg-info/
+dist/
+build/
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+*.DS_Store
+Thumbs.db
