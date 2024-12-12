@@ -13,8 +13,7 @@ def carga_archivo():
             
             global datos
             datos = pd.read_csv(archivo)
-            print("Datos cargados correctamente:")
-            print(datos.head())
+            
             ventanaArch.destroy()
             ventana_principal(datos)
         except Exception as e:
