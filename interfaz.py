@@ -10,6 +10,7 @@ def ventana_principal(datos):
     
     Principal = tk.Tk()
     Principal.title("Visualizador de ventas")
+    Principal.columnconfigure([0, 1, 2, 3, 4, 5, 6, 7], weight=1)
     ancho_ventana = 700
     alto_ventana = 400
     ancho_pantalla = Principal.winfo_screenwidth()
@@ -22,11 +23,11 @@ def ventana_principal(datos):
     #Creo el frame e inserto treeview
     global tree
     frame = tk.Frame(Principal) 
-    frame.grid(row=1, column=0, columnspan=6, padx=10, pady=10)
+    frame.grid(row=1, column=0, columnspan=7, padx=10, pady=16)
     tree = ttk.Treeview(frame, show="headings")
     tree.grid(row=1, column=0, sticky="nsew")
     scrollbar = ttk.Scrollbar(frame, orient="vertical", command=tree.yview)
-    scrollbar.grid(row=0, column=1, sticky="ns")
+    scrollbar.grid(row=1, column=1, sticky="ns")
     tree.configure(yscrollcommand=scrollbar.set)
 
     #Configuro las columnas del treeview 
@@ -46,8 +47,8 @@ def ventana_principal(datos):
     global filtro_seleccionado
     filtro_seleccionado = tk.StringVar(value="Sin filtro")
     filtros = ["Sin filtro", "Nombre - A-Z", "Nombre - Z-A", "Fecha - más antiguo", "Fecha - más recientes"]
-    menu_opciones = tk.OptionMenu(Principal, filtro_seleccionado, *filtros).grid(column=2,row=0, sticky="nswe")
-    boton_mostrar = tk.Button(Principal, text="Mostrar Selección", command=functools.partial(mostrar_seleccion, datos)).grid(column=3,row=0, sticky="nswe")
+    menu_opciones = tk.OptionMenu(Principal, filtro_seleccionado, *filtros).grid(column=5,row=0, sticky="nswe")
+    boton_mostrar = tk.Button(Principal, text="Mostrar Selección", command=functools.partial(mostrar_seleccion, datos)).grid(column=6,row=0, sticky="nswe")
 
     
     Principal.mainloop()
@@ -59,7 +60,7 @@ def mostrar_seleccion(datos):
         datos_filtrados = aplicar_filtro(opcion, datos)
         mostrar(datos_filtrados)
     else: 
-        mostrar(datos.head())
+        mostrar(datos.head(datos.shape[0]))
     
 
 #Funcion que itera segun el Dataframe que recibe como parámetro para mostrarlo en el treeview
