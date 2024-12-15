@@ -34,6 +34,8 @@ def iniciar():
     pos_y = (alto_pantalla // 2) - (alto_ventana // 2) - 70
     ventanaArch.geometry(f"{ancho_ventana}x{alto_ventana}+{pos_x}+{pos_y}")
     fonttitulo = font.Font(family="Lucida Fax", size=16, weight="bold")
+    ventanaArch.minsize(400, 90)
+    ventanaArch.maxsize(400, 90)
 
     tk.Label(ventanaArch, text="Visualizador de Ventas", font=fonttitulo).grid(row=0, column=1, sticky="nswe")
     tk.Button(text="Cargar archivo .csv", command=carga_archivo).grid(column=1, row=1, sticky="nswe")

@@ -19,21 +19,23 @@ def ventana_principal(datos):
     pos_x = (ancho_pantalla // 2) - (ancho_ventana // 2)
     pos_y = (alto_pantalla // 2) - (alto_ventana // 2) - 70
     Principal.geometry(f"{ancho_ventana}x{alto_ventana}+{pos_x}+{pos_y}")
+    Principal.minsize(700,400)
+    Principal.maxsize(1200, 900)
     fonttitulo = font.Font(family="Lucida Fax", size=16, weight="bold")
 
     #Creo un frame para la barra de busqueda y el botón de buscar
     frame_busqueda = tk.Frame(Principal)
-    frame_busqueda.grid(row=0, column=0, columnspan=5)
+    frame_busqueda.grid(row=0, column=0)
 
     global barrabusqueda
     barrabusqueda = tk.Entry(frame_busqueda, width=50)
-    barrabusqueda.grid(row=0, column=0, columnspan=4, sticky="nsew")
+    barrabusqueda.grid(row=0, column=0, sticky="nsew")
     barrabusqueda.insert(0, "Ingrese aquí para buscar...")
     barrabusqueda.bind("<FocusIn>", on_entry_click)  # Al hacer clic
     barrabusqueda.bind("<FocusOut>", on_focusout)  # Al perder el foco
 
     btn_buscar = tk.Button(frame_busqueda, text="Buscar", command=lambda: buscar(barrabusqueda.get(), datos))
-    btn_buscar.grid(row=0, column=5)
+    btn_buscar.grid(row=0, column=5, padx=10)
 
     #Creo el frame de visualizacion e inserto treeview
     global tree
@@ -50,28 +52,40 @@ def ventana_principal(datos):
     for col in tree["columns"]:
         tree.heading(col, text=col)
         tree.column(col, width=100) 
-    global total
-    total = tk.Label(Principal, text=f"Total:")
-    total.grid(row=11, column=6)
+    
 
     #Ajusto el tamaño del frame para que sea flexible
     frame.grid_rowconfigure(0, weight=1)
     frame.grid_columnconfigure(0, weight=1)
 
-    #Boton que filtra los datos del treeview o tabla
+    #Menu que filtra los datos del treeview o tabla
     global filtro_seleccionado
     filtro_seleccionado = tk.StringVar(value="Sin filtro")
     filtros = ["Sin filtro", "Nombre - A-Z", "Nombre - Z-A", "Fecha - más antiguo", "Fecha - más recientes"]
-    menu_opciones = tk.OptionMenu(Principal, filtro_seleccionado, *filtros).grid(column=5,row=0, sticky="nswe")
-    boton_mostrar = tk.Button(Principal, text="Filtrar datos", command=functools.partial(treeview_to_dataframe, tree)).grid(column=6,row=0, sticky="nswe")
+    menu_opciones = tk.OptionMenu(Principal, filtro_seleccionado, *filtros).grid(column=6,row=0, sticky="nswe")
+    filtro_seleccionado.trace("w", lambda *args: treeview_to_dataframe(tree)) #Activa el cambio de filtro automaticamente, sin boton "Filtrar"
+
+    #Frame de botones de acciones
+    frame_botones = tk.Frame(Principal)
+    frame_botones.grid(row=11, column=0, columnspan=7, sticky="nsew")
 
     #Boton para exportar los datos seleccionados en otro csv o excel
-    boton_exportar = tk.Button(Principal, text="Exportar selección", command=exportar_seleccion)
-    boton_exportar.grid(row=11, column=0, columnspan=3, sticky="nsew")
+    boton_exportar = tk.Button(frame_botones, text="Exportar selección", command=exportar_seleccion)
+    boton_exportar.grid(row=11, column=0, sticky="nsew", padx=10)
+
+    #Boton para generar gráficos
+    boton_graficos = tk.Button(frame_botones, text="Generar gráficos", command=elegir_otro)
+    boton_graficos.grid(row=11, column=1, sticky="nsew", padx=10)
 
     #Boton para subir otro archivo
-    boton_otro = tk.Button(Principal, text="Seleccionar otro archivo", command=elegir_otro)
-    boton_otro.grid(row=11, column=4, columnspan=2, sticky="nsew")
+    boton_otro = tk.Button(frame_botones, text="Seleccionar otro archivo", command=elegir_otro)
+    boton_otro.grid(row=11, column=2, sticky="nsew", padx=10)
+
+    #Total de la tabla
+    global total
+    frame_botones.columnconfigure(3, weight=3)  # Espacio extra para la última columna
+    total = tk.Label(frame_botones, text=f"Total:", anchor="e")
+    total.grid(row=11, column=3, padx=(5, 15), sticky="e")
 
     #Muestro todos los datos del archivo sin filtro
     mostrar(traer_todo(datos)) 
