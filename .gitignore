@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *.pyo
+prueba.py
 
 # Entornos virtuales
 env/
