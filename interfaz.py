@@ -2,7 +2,9 @@ import pandas as pd
 import tkinter as tk
 from tkinter import filedialog, font, ttk, messagebox
 from filtrar import *
+from graficos import *
 import functools
+import openpyxl
 
 def ventana_principal(datos):
     #Inicio la interfaz principal
@@ -73,8 +75,8 @@ def ventana_principal(datos):
     boton_exportar = tk.Button(frame_botones, text="Exportar selección", command=exportar_seleccion)
     boton_exportar.grid(row=11, column=0, sticky="nsew", padx=10)
 
-    #Boton para generar gráficos
-    boton_graficos = tk.Button(frame_botones, text="Generar gráficos", command=elegir_otro)
+    #Boton para generar gráficos lambda:
+    boton_graficos = tk.Button(frame_botones, text="Generar gráficos", command=lambda: graficar(sinfiltro))
     boton_graficos.grid(row=11, column=1, sticky="nsew", padx=10)
 
     #Boton para subir otro archivo
@@ -136,7 +138,7 @@ def treeview_to_dataframe(treeview):
     nuevos_datos = pd.DataFrame(filas, columns=encabezados) # Utilizando pandas creo un Dataframe(filasdatos, encabezados)
     mostrar_seleccion(nuevos_datos)
 
-def exportar_seleccion(formato="csv"):
+def exportar_seleccion():
     # Obtengo los datos seleccionados
     selected_items = tree.selection()
     if not selected_items:
@@ -150,18 +152,20 @@ def exportar_seleccion(formato="csv"):
         datos_seleccionados = pd.DataFrame(filas, columns=encabezados)
 
         # Abro un cuadro de diálogo para que el usuario guarde el archivo en el formato que desee
-        filetypes = [("Archivos CSV", "*.csv")] if formato == "csv" else [("Archivos Excel", "*.xlsx")]
-        extension = ".csv" if formato == "csv" else ".xlsx"
+        #extension = ".csv" if formato == "csv" else ".xlsx"
     
         file_path = filedialog.asksaveasfilename(
-            defaultextension=extension,
-            filetypes=filetypes,
-            title="Guardar archivo como"
+            defaultextension=".csv",
+            filetypes=[
+            ("Archivo CSV", "*.csv"),
+            ("Archivo Excel", "*.xlsx")
+        ],
+            title="Guardar archivo como..."
         )
 
         # Exporto a CSV o Excel
         try:
-            if formato == "csv":
+            if file_path.endswith(".csv"):
                 datos_seleccionados.to_csv(file_path, index=False)
                 messagebox.showinfo("Exportar", "¡Datos exportados con éxito!.")
             else:

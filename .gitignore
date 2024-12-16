@@ -24,6 +24,7 @@ config.json
 .tox/
 .coverage
 htmlcov/
+archivos_salida/
 
 # Archivos de compilación
 *.egg-info/
