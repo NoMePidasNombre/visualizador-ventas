@@ -22,7 +22,7 @@ def graficar(datos):
     ax[0, 0].set_xticks(range(0, max_value + 1))
     ax[0, 0].set_xlabel('Cantidad')
     ax[0, 0].set_title('Cantidad de productos vendidos')
-    ax[0, 0].tick_params(axis='y', labelsize=8)  # Reducir el tamaño de las etiquetas del eje Y
+    ax[0, 0].tick_params(axis='y', labelsize=5)  # Reducir el tamaño de las etiquetas del eje Y
 
     # Segundo gráfico: Gráfico de barras (cantidad de compras por cliente)
     diccionario_clientes = {}
@@ -41,16 +41,54 @@ def graficar(datos):
     ax[0, 1].set_yticks(range(0, max_value + 1))
     ax[0, 1].set_xlabel('Clientes')
     ax[0, 1].set_title('Cantidad de compras por cliente')
-    ax[0, 1].tick_params(axis='x', labelrotation=45, labelsize=8)  # Rotar etiquetas del eje X y reducir tamaño
+    ax[0, 1].tick_params(axis='x', labelrotation=45, labelsize=8)  # Roto 45º las etiquetas para que se vea mejor
 
+    
+
+
+    # Tercer gráfico: Gráfico de línea de ingresos totales de cada mes
+
+    diccionario_cantidades_mensuales = {"Enero": 0, "Febrero": 0, "Marzo": 0, "Abril": 0, "Mayo": 0, "Junio": 0, "Julio": 0, "Agosto": 0,"Septiembre": 0, "Octubre": 0, "Noviembre": 0, "Diciembre": 0}
+    
+    cantidades = datos[['Fecha','Total']].to_numpy()
+    
+    for cantidad in cantidades:
+        if "-01-" in cantidad[0]:
+            diccionario_cantidades_mensuales["Enero"] += cantidad[1]
+        elif "-02-" in cantidad[0]:
+            diccionario_cantidades_mensuales["Febrero"] += cantidad[1]
+        elif "-03-" in cantidad[0]:
+            diccionario_cantidades_mensuales["Marzo"] += cantidad[1]
+        elif "-04-" in cantidad[0]:
+            diccionario_cantidades_mensuales["Abril"] += cantidad[1]
+        elif "-05-" in cantidad[0]:
+            diccionario_cantidades_mensuales["Mayo"] += cantidad[1]
+        elif "-06-" in cantidad[0]:
+            diccionario_cantidades_mensuales["Junio"] += cantidad[1]
+        elif "-07-" in cantidad[0]:
+            diccionario_cantidades_mensuales["Julio"] += cantidad[1]
+        elif "-08-" in cantidad[0]:
+            diccionario_cantidades_mensuales["Agosto"] += cantidad[1]
+        elif "-09-" in cantidad[0]:
+            diccionario_cantidades_mensuales["Septiembre"] += cantidad[1]
+        elif "-10-" in cantidad[0]:
+            diccionario_cantidades_mensuales["Octubre"] += cantidad[1]
+        elif "-11-" in cantidad[0]:
+            diccionario_cantidades_mensuales["Noviembre"] += cantidad[1]
+        elif "-12-" in cantidad[0]:
+            diccionario_cantidades_mensuales["Diciembre"] += cantidad[1]
+
+    x = list(diccionario_cantidades_mensuales.keys())
+    y = list(diccionario_cantidades_mensuales.values())
+
+
+    ax[1, 0].plot(x, y)
+    ax[1, 0].set_xlabel('Meses')
+    ax[1, 0].set_title('Total de ingresos por mes')
+    ax[1, 0].tick_params(axis='x', labelrotation=45, labelsize=8)
+
+
+    # Mostrar los gráficos generados
     plt.tight_layout()  # Ajusta automáticamente los márgenes y separaciones
     plt.subplots_adjust(top=0.9)  # Ajusta el espacio del título principal
     plt.show()
-
-
-    # Tercer gráfico: Gráfico de línea de productos vendidos a lo largo del tiempo
-
-    # Cuarto gráfico: Gráfico de barras cantidad de productos vendidos
-
-    # Quinto gráfico: Gráfico de ingresos por cada mes
-    

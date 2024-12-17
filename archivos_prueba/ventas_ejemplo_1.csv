@@ -1,48 +1,58 @@
 Fecha,Cliente,Producto,Cantidad,Precio Unitario,Total
 2024-01-01,Juan Perez,Teclado,2,20,40
 2024-01-01,Maria Lopez,Ratón,1,15,15
-2024-01-02,Pedro Garcia,Monitor,1,150,150
-2024-01-03,Juan Perez,Silla Gamer,1,200,200
-2024-01-04,Maria Lopez,Lámpara LED,3,10,30
-2024-01-05,Ana Suarez,Escritorio,1,100,100
-2024-01-05,Carlos Ruiz,Impresora,1,120,120
-2024-01-06,Laura Vega,Audífonos,2,50,100
-2024-01-06,Juan Perez,Mouse Pad,1,10,10
-2024-01-07,Maria Lopez,Cámara Web,1,80,80
-2024-01-07,Pedro Garcia,Micrófono,1,60,60
-2024-01-08,Ana Suarez,Teclado Mecánico,1,70,70
-2024-01-08,Carlos Ruiz,Cargador USB,3,25,75
-2024-01-09,Laura Vega,Altavoces,1,90,90
-2024-01-09,Juan Perez,Laptop,1,1000,1000
-2024-01-10,Maria Lopez,Router,1,60,60
-2024-01-10,Pedro Garcia,Tablet,1,300,300
-2024-01-11,Ana Suarez,Proyector,1,250,250
-2024-01-11,Carlos Ruiz,Memoria USB,4,15,60
-2024-01-12,Laura Vega,Disco Duro,1,80,80
-2024-01-12,Juan Perez,Monitor,2,150,300
-2024-01-13,Maria Lopez,Webcam HD,1,100,100
-2024-01-13,Pedro Garcia,Base para Laptop,1,30,30
-2024-01-14,Ana Suarez,Fuente de Poder,1,80,80
-2024-01-14,Carlos Ruiz,Switch de Red,1,40,40
+2024-02-05,Pedro Garcia,Monitor,1,150,150
+2024-02-03,Juan Perez,Silla Gamer,1,200,200
+2024-04-04,Maria Lopez,Lámpara LED,3,10,30
+2024-05-05,Ana Suarez,Escritorio,1,100,100
+2024-06-05,Carlos Ruiz,Impresora,1,120,120
+2024-02-06,Laura Vega,Audífonos,2,50,100
+2024-02-06,Juan Perez,Mouse Pad,1,10,10
+2024-07-07,Maria Lopez,Cámara Web,1,80,80
+2024-07-07,Pedro Garcia,Micrófono,1,60,60
+2024-08-08,Ana Suarez,Teclado Mecánico,1,70,70
+2024-09-08,Carlos Ruiz,Cargador USB,3,25,75
+2024-10-09,Laura Vega,Altavoces,1,90,90
+2024-10-09,Juan Perez,Laptop,1,1000,1000
+2024-11-10,Maria Lopez,Router,1,60,60
+2024-11-10,Pedro Garcia,Tablet,1,300,300
+2024-11-11,Ana Suarez,Proyector,1,250,250
+2024-11-11,Carlos Ruiz,Memoria USB,4,15,60
+2024-12-12,Laura Vega,Disco Duro,1,80,80
+2024-12-12,Juan Perez,Monitor,2,150,300
+2024-03-13,Maria Lopez,Webcam HD,1,100,100
+2024-03-13,Pedro Garcia,Base para Laptop,1,30,30
+2024-03-14,Ana Suarez,Fuente de Poder,1,80,80
+2024-03-14,Carlos Ruiz,Switch de Red,1,40,40
 2024-02-01,Laura Vega,Teclado Inalámbrico,1,30,30
+2024-02-10,Juan Perez,Monitor,1,150,150
 2024-02-15,Carlos Ruiz,Monitor 4K,1,400,400
 2024-03-05,Juan Perez,Disco SSD,2,120,240
+2024-03-15,Maria Lopez,Silla Gamer,2,200,400
 2024-03-20,Maria Lopez,Impresora Multifuncional,1,250,250
+2024-04-05,Pedro Garcia,Audífonos,3,50,150
 2024-04-12,Ana Suarez,Estación de Carga,1,50,50
 2024-04-25,Pedro Garcia,Audífonos Bluetooth,1,70,70
 2024-05-08,Laura Vega,Mouse Gamer,1,40,40
+2024-05-10,Ana Suarez,Teclado,2,20,40
 2024-05-30,Carlos Ruiz,Teclado,1,60,60
 2024-06-14,Maria Lopez,Lámpara de Escritorio,2,25,50
+2024-06-20,Carlos Ruiz,Impresora,1,120,120
 2024-06-28,Juan Perez,Altavoces 2.1,1,120,120
+2024-07-02,Laura Vega,Disco Duro,2,80,160
 2024-07-10,Pedro Garcia,Tablet Gráfica,1,150,150
 2024-07-25,Ana Suarez,Disco Externo,1,200,200
 2024-08-05,Laura Vega,Cámara de Seguridad,1,180,180
+2024-08-15,Juan Perez,Mouse Gamer,1,40,40
 2024-08-20,Carlos Ruiz,Cargador Rápido,2,35,70
 2024-09-09,Maria Lopez,Kit de Herramientas,1,90,90
+2024-09-18,Maria Lopez,Lámpara LED,4,10,40
 2024-09-27,Juan Perez,Fuente de Poder 850W,1,120,120
 2024-10-03,Pedro Garcia,Monitor Ultrawide,1,500,500
 2024-10-18,Ana Suarez,Lámpara LED Inteligente,3,45,135
+2024-10-22,Pedro Garcia,Tablet,1,300,300
 2024-11-10,Laura Vega,Bocinas Portátiles,1,60,60
+2024-11-12,Ana Suarez,Monitor,1,150,150
 2024-11-22,Carlos Ruiz,Impresora 3D,1,800,800
 2024-12-05,Maria Lopez,Reloj Inteligente,1,200,200
 2024-12-20,Juan Perez,Silla Ergonómica,1,250,250
