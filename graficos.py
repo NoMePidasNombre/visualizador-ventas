@@ -1,9 +1,11 @@
 import matplotlib.pyplot as plt
+from matplotlib.gridspec import GridSpec
 import pandas as pd
 
 def graficar(datos):
-    fig, ax = plt.subplots(2, 2, figsize=(12, 10))  # Tamaño del gráfico ajustado
-    fig.suptitle('Resumen de datos')
+    fig = plt.figure(figsize=(12, 10))  # Tamaño del gráfico ajustado
+    grilla = GridSpec(2, 2, figure=fig)
+    fig.suptitle('Resumen de datos', fontsize=16, fontweight='bold')
 
     # Primer gráfico: Gráfico de barras horizontal (cantidad de productos vendidos)
     diccionario_productos = {}
@@ -18,11 +20,12 @@ def graficar(datos):
     x = list(diccionario_productos.values())
 
     max_value = max(x)
-    ax[0, 0].barh(y, x)
-    ax[0, 0].set_xticks(range(0, max_value + 1))
-    ax[0, 0].set_xlabel('Cantidad')
-    ax[0, 0].set_title('Cantidad de productos vendidos')
-    ax[0, 0].tick_params(axis='y', labelsize=5)  # Reducir el tamaño de las etiquetas del eje Y
+    ax = fig.add_subplot(grilla[0, 0])
+    ax.barh(y, x)
+    ax.set_xticks(range(0, max_value + 1))
+    ax.set_xlabel('Cantidad')
+    ax.set_title('Cantidad de productos vendidos', fontsize=12)
+    ax.tick_params(axis='y', labelsize=5)  # Reducir el tamaño de las etiquetas del eje Y
 
     # Segundo gráfico: Gráfico de barras (cantidad de compras por cliente)
     diccionario_clientes = {}
@@ -36,14 +39,13 @@ def graficar(datos):
     x = list(diccionario_clientes.keys())
     y = list(diccionario_clientes.values())
 
+    ax1 = fig.add_subplot(grilla[0, 1])
     max_value = max(y)
-    ax[0, 1].bar(x, y)
-    ax[0, 1].set_yticks(range(0, max_value + 1))
-    ax[0, 1].set_xlabel('Clientes')
-    ax[0, 1].set_title('Cantidad de compras por cliente')
-    ax[0, 1].tick_params(axis='x', labelrotation=45, labelsize=8)  # Roto 45º las etiquetas para que se vea mejor
-
-    
+    ax1.bar(x, y)
+    ax1.set_yticks(range(0, max_value + 1))
+    ax1.set_xlabel('Clientes')
+    ax1.set_title('Cantidad de compras por cliente', fontsize=12)
+    ax1.tick_params(axis='x', labelrotation=45, labelsize=8)  # Roto 45º las etiquetas para que se vea mejor
 
 
     # Tercer gráfico: Gráfico de línea de ingresos totales de cada mes
@@ -81,14 +83,13 @@ def graficar(datos):
     x = list(diccionario_cantidades_mensuales.keys())
     y = list(diccionario_cantidades_mensuales.values())
 
-
-    ax[1, 0].plot(x, y)
-    ax[1, 0].set_xlabel('Meses')
-    ax[1, 0].set_title('Total de ingresos por mes')
-    ax[1, 0].tick_params(axis='x', labelrotation=45, labelsize=8)
-
+    ax2 = fig.add_subplot(grilla[1, :])
+    ax2.plot(x, y)
+    ax2.set_xlabel('Meses')
+    ax2.set_title('Total de ingresos por mes', fontsize=12)
+    ax2.tick_params(axis='x', labelrotation=45, labelsize=8)
 
     # Mostrar los gráficos generados
     plt.tight_layout()  # Ajusta automáticamente los márgenes y separaciones
-    plt.subplots_adjust(top=0.9)  # Ajusta el espacio del título principal
+    plt.subplots_adjust(top=0.88, hspace=0.6)
     plt.show()

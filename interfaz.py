@@ -152,7 +152,6 @@ def exportar_seleccion():
         datos_seleccionados = pd.DataFrame(filas, columns=encabezados)
 
         # Abro un cuadro de diálogo para que el usuario guarde el archivo en el formato que desee
-        #extension = ".csv" if formato == "csv" else ".xlsx"
     
         file_path = filedialog.asksaveasfilename(
             defaultextension=".csv",
@@ -184,7 +183,12 @@ def elegir_otro():
     if archivo:
         try:
             datos = pd.read_csv(archivo)
-            ventana_principal(datos)
+            nombre_columnas = list(datos.columns)
+            if 'Fecha' in nombre_columnas and 'Cantidad' in nombre_columnas and 'Cliente' in nombre_columnas and 'Total' in nombre_columnas and 'Producto' in nombre_columnas and 'Precio Unitario' in nombre_columnas:
+                datos = pd.read_csv(archivo)
+                ventana_principal(datos)
+            else:
+                messagebox.showerror("Error", "El archivo ingresado no es válido.")
         except Exception as e:
             print(f"Error al cargar el archivo: {e}")
             return
